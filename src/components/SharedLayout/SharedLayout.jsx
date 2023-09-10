@@ -1,11 +1,11 @@
 import css from './SharedLayout.module.css';
 import { Outlet } from 'react-router-dom';
-import { Header } from 'components/Header';
+import { AppBar } from 'components/AppBar';
 
 export const SharedLayout = () => {
   return (
     <>
-      <Header />
+      <AppBar />
       <div className={css.mainWrapper}>
         <Outlet />
       </div>

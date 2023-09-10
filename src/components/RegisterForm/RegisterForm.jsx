@@ -1,17 +1,24 @@
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-// import { loginUser } from 'redux/operations';
-import { logIn } from 'redux/userSlice';
+// import { signupUser } from 'redux/operations';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
-import css from './LoginForm.module.css';
+import css from './RegisterForm.module.css';
+import { signupUser } from 'redux/operations';
 
 const initialValues = {
+  name: '',
   email: '',
   password: '',
 };
 
 const schema = yup.object({
+  name: yup
+    .string()
+    .matches(
+      /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
+      "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+    )
+    .required(`Name field can't be empty`),
   email: yup
     .string()
     .matches(
@@ -28,12 +35,12 @@ const schema = yup.object({
     .required(`Phone number field can't be empty`),
 });
 
-export const LoginForm = () => {
+export const RegisterForm = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleSubmit = (values, actions) => {
     const { resetForm } = actions;
+    const name = values.name;
     const email = values.email;
     const password = values.password;
 
@@ -45,10 +52,10 @@ export const LoginForm = () => {
     //   return;
     // }
 
-    // dispatch(loginUser({ email, password }));
-    dispatch(logIn(email));
+    console.log({ name, email, password });
+
+    dispatch(signupUser({ name, email, password }));
     resetForm();
-    navigate('/contacts', { replace: true });
   };
 
   return (
@@ -58,6 +65,11 @@ export const LoginForm = () => {
       onSubmit={handleSubmit}
     >
       <Form className={css.form}>
+        <label className={css.label}>
+          Name
+          <Field className={css.input} type="text" name="name" required />
+          <ErrorMessage name="name" component="p" className={css.error} />
+        </label>
         <label className={css.label}>
           Email
           <Field className={css.input} type="email" name="email" required />

@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts, selectIsLoading, selectError } from 'redux/selectors';
 import { fetchContacts } from 'redux/operations';
+import { useLogOutRedirect } from 'hooks/useLogOutRedirect';
 import { Section } from 'components/Section';
 import { AddContactForm } from 'components/AddContactForm';
 import { Filter } from 'components/Filter';
@@ -11,6 +12,8 @@ export const ContactsPage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
+
+  useLogOutRedirect();
 
   useEffect(() => {
     dispatch(fetchContacts());
