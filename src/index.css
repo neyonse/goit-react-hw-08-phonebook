@@ -67,15 +67,6 @@ ul {
     width: 100%;
   }
 
-  .main-wrapper {
-    display: flex;
-    gap: 64px;
-    margin: 40px auto;
-    padding: 0 32px;
-    max-width: 1440px;
-    width: 1440px;
-  }
-
   body {
     background-color: var(--main-color);
   }
