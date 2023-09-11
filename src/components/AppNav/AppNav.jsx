@@ -13,12 +13,12 @@ export const AppNav = ({ userLoggedIn }) => {
           </li>
           <li>
             <NavLink className={css.navLink} to="/login">
-              Login
+              Log In
             </NavLink>
           </li>
           <li>
-            <NavLink className={css.navLink} to="/register">
-              Register
+            <NavLink className={css.navLink} to="/signup">
+              Sign Up
             </NavLink>
           </li>
         </ul>

@@ -10,7 +10,7 @@
 @media screen and (min-width: 1440px) {
   .form {
     width: 320px;
-    margin: 32px 0 0;
+    margin: 32px auto 0;
   }
 }
 

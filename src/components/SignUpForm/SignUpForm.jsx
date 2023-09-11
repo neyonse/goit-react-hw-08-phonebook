@@ -1,9 +1,8 @@
 import { useDispatch } from 'react-redux';
-// import { signupUser } from 'redux/operations';
+import { signupUser } from 'redux/operations';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
-import css from './RegisterForm.module.css';
-import { signupUser } from 'redux/operations';
+import css from './SignUpForm.module.css';
 
 const initialValues = {
   name: '',
@@ -35,7 +34,7 @@ const schema = yup.object({
     .required(`Phone number field can't be empty`),
 });
 
-export const RegisterForm = () => {
+export const SignUpForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {

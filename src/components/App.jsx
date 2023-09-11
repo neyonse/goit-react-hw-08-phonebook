@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import { SharedLayout } from 'components/SharedLayout';
 import {
   HomePage,
-  RegisterPage,
+  SignUpPage,
   LoginPage,
   ContactsPage,
   NotFoundPage,
@@ -13,7 +13,7 @@ export function App() {
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route index element={<HomePage />} />
-        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/contacts" element={<ContactsPage />} />
         <Route path="*" element={<NotFoundPage />} />

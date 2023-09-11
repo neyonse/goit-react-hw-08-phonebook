@@ -1,3 +1,5 @@
+import { Welcome } from 'components/Welcome';
+
 export const HomePage = () => {
-  return <div>Home Page</div>;
+  return <Welcome />;
 };
