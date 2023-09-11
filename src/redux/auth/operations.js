@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import toast from 'react-hot-toast';
 
-axios.defaults.baseURL = 'https://connection-api.herokuapp.com';
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -17,10 +18,14 @@ export const signupUser = createAsyncThunk(
     try {
       const response = await axios.post('/users/signup', credentials);
       setAuthHeader(response.data.token);
+      toast.success('Congrats! You have been successfully signed up!');
       console.log(response);
       console.log('Registration is successful');
       return response.data;
     } catch (e) {
+      // console.log(e.response.data.errors);
+      toast.error('Oooops! Something went wrong. Please, try again.');
+      console.log(e);
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -35,6 +40,9 @@ export const loginUser = createAsyncThunk(
       console.log(response);
       return response.data;
     } catch (e) {
+      toast.error('Oooops! Something went wrong. Please, try again.');
+      console.log(e);
+      console.log(e.message);
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -48,6 +56,7 @@ export const logoutUser = createAsyncThunk(
       clearAuthHeader();
       console.log(response);
     } catch (e) {
+      toast.error('Oooops! Something went wrong. Please, try again.');
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -69,6 +78,7 @@ export const updateUser = createAsyncThunk(
       console.log(response);
       return response.data;
     } catch (e) {
+      toast.error('Oooops! Something went wrong. Please, try again.');
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -82,6 +92,7 @@ export const fetchContacts = createAsyncThunk(
       console.log(response.data);
       return response.data;
     } catch (e) {
+      toast.error('Oooops! Something went wrong. Please, try again.');
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -95,6 +106,7 @@ export const addContact = createAsyncThunk(
       console.log(response.data);
       return response.data;
     } catch (e) {
+      toast.error('Oooops! Something went wrong. Please, try again.');
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -107,6 +119,7 @@ export const deleteContact = createAsyncThunk(
       await axios.delete(`/contacts/${contactId}`);
       return contactId;
     } catch (e) {
+      toast.error('Oooops! Something went wrong. Please, try again.');
       return thunkAPI.rejectWithValue(e.message);
     }
   }
