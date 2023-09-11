@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 // import { loginUser } from 'redux/operations';
 import { logIn } from 'redux/userSlice';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as yup from 'yup';
+// import * as yup from 'yup';
 import css from './LoginForm.module.css';
 
 const initialValues = {
@@ -11,22 +11,22 @@ const initialValues = {
   password: '',
 };
 
-const schema = yup.object({
-  email: yup
-    .string()
-    .matches(
-      /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
-      "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-    )
-    .required(`Name field can't be empty`),
-  password: yup
-    .string()
-    .matches(
-      /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/,
-      'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +'
-    )
-    .required(`Phone number field can't be empty`),
-});
+// const schema = yup.object({
+//   email: yup
+//     .string()
+//     .matches(
+//       /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
+//       "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+//     )
+//     .required(`Name field can't be empty`),
+//   password: yup
+//     .string()
+//     .matches(
+//       /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/,
+//       'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +'
+//     )
+//     .required(`Phone number field can't be empty`),
+// });
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -35,7 +35,6 @@ export const LoginForm = () => {
   const handleSubmit = (values, actions) => {
     const { resetForm } = actions;
     const email = values.email;
-    const password = values.password;
 
     // const isRegistered = isUserAlreadyRegistered(name);
 

@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux';
-import { selectUser } from 'redux/selectors';
+import { selectIsLoggedIn } from 'redux/auth/selectors';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export const useLogOutRedirect = () => {
-  const userLoggedIn = useSelector(selectUser).isLoggedIn;
+  const userLoggedIn = useSelector(selectIsLoggedIn);
   const navigate = useNavigate();
 
   useEffect(() => {

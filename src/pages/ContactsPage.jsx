@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts, selectIsLoading, selectError } from 'redux/selectors';
-import { fetchContacts } from 'redux/operations';
+import { fetchContacts } from 'redux/auth/operations';
 import { useLogOutRedirect } from 'hooks/useLogOutRedirect';
 import { Section } from 'components/Section';
 import { AddContactForm } from 'components/AddContactForm';
