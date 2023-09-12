@@ -1,14 +1,17 @@
 import { useDispatch } from 'react-redux';
 import { logoutUser } from 'redux/auth/operations';
+import { NavLink } from 'react-router-dom';
 import css from './UserMenu.module.css';
 import PropTypes from 'prop-types';
 
-export const UserMenu = ({ name }) => {
+export const UserMenu = ({ email }) => {
   const dispatch = useDispatch();
 
   return (
     <div className={css.userMenu}>
-      <p className={css.userName}>{name}</p>
+      <NavLink to="/profile" className={css.userName}>
+        {email}
+      </NavLink>
       <button type="button" onClick={() => dispatch(logoutUser())}>
         Log Out
       </button>
@@ -17,5 +20,5 @@ export const UserMenu = ({ name }) => {
 };
 
 UserMenu.propTypes = {
-  name: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
 };

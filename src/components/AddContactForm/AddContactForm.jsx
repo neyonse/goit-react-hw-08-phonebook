@@ -1,9 +1,10 @@
 import css from './AddContactForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/auth/operations';
-import { selectContacts } from 'redux/selectors';
+import { selectContacts } from 'redux/contacts/selectors';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
+import toast from 'react-hot-toast';
 
 const initialValues = {
   name: '',
@@ -47,7 +48,7 @@ export function AddContactForm() {
     const isAdded = isContactAlreadyAdded(name);
 
     if (isAdded !== -1) {
-      alert(`${name} is already in contacts`);
+      toast.error('This contact is already in your contacts list.');
       resetForm();
       return;
     }

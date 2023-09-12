@@ -1,7 +1,7 @@
 import css from './Filter.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { setFilter } from 'redux/filterSlice';
-import { selectFilter } from 'redux/selectors';
+import { setFilter } from 'redux/filter/filterSlice';
+import { selectFilter } from 'redux/filter/selectors';
 import { LuSearch } from 'react-icons/lu';
 
 export function Filter() {

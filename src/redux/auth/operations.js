@@ -23,7 +23,6 @@ export const signupUser = createAsyncThunk(
       console.log('Registration is successful');
       return response.data;
     } catch (e) {
-      // console.log(e.response.data.errors);
       toast.error('Oooops! Something went wrong. Please, try again.');
       console.log(e);
       return thunkAPI.rejectWithValue(e.message);

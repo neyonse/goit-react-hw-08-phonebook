@@ -1,0 +1,36 @@
+.profileHeader {
+  margin-top: 32px;
+  text-align: center;
+}
+
+.profileWrap {
+  display: flex;
+  gap: 48px;
+
+  margin-top: 24px;
+}
+
+.profileMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-right: 24px;
+
+  border-right: 1px solid var(--text-secondary-color);
+}
+
+.profileMenuLink {
+  color: var(--text-secondary-color);
+}
+
+@media screen and (min-width: 1024px) {
+  .profileWrap {
+    margin-top: 32px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .profileHeader {
+    margin-top: 0;
+  }
+}

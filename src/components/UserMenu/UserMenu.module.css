@@ -11,6 +11,13 @@
 
   border-bottom: 2px solid var(--secondary-color);
   border-radius: 8px;
+
+  transition: color var(--hover-transition);
+}
+
+.userName:hover,
+.userName:focus {
+  color: var(--accent-color-01);
 }
 
 button {

@@ -1,32 +1,37 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-// import { loginUser } from 'redux/operations';
 import { loginUser } from 'redux/auth/operations';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-// import * as yup from 'yup';
+import * as yup from 'yup';
 import css from './LoginForm.module.css';
+import { selectIsLoggedIn } from 'redux/auth/selectors';
+import { useEffect } from 'react';
 
 const initialValues = {
   email: '',
   password: '',
 };
 
-// const schema = yup.object({
-//   email: yup
-//     .string()
-//     .matches(
-//       /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
-//       "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-//     )
-//     .required(`Name field can't be empty`),
-//   password: yup
-//     .string()
-//     .matches(
-//       /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/,
-//       'Phone number must be digits and can contain spaces, dashes, parentheses and can start with +'
-//     )
-//     .required(`Phone number field can't be empty`),
-// });
+const schema = yup.object({
+  email: yup
+    .string()
+    .matches(
+      /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
+      'Please enter a valid email. For example Adrian@mail.com'
+    )
+    .required(`Email is required`),
+  password: yup
+    .string()
+    .matches(
+      /^[a-zA-Z-0-9]{8,}$/,
+      'Password should be 8 chars minimum and can contain latin letters and numeric digits'
+    )
+    // .matches(
+    //   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
+    //   'Password should be 8 chars minimum and contain 1 upper case letter, 1 lower case letter and 1 numeric digit'
+    // )
+    .required(`Password is required`),
+});
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -47,13 +52,20 @@ export const LoginForm = () => {
 
     dispatch(loginUser({ email, password }));
     resetForm();
-    navigate('/contacts', { replace: true });
   };
+
+  const userLoggedIn = useSelector(selectIsLoggedIn);
+
+  useEffect(() => {
+    if (userLoggedIn) {
+      navigate('/contacts', { replace: true });
+    }
+  }, [navigate, userLoggedIn]);
 
   return (
     <Formik
       initialValues={initialValues}
-      // validationSchema={schema}
+      validationSchema={schema}
       onSubmit={handleSubmit}
     >
       <Form className={css.form}>
