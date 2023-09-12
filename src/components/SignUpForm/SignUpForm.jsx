@@ -76,7 +76,12 @@ export const SignUpForm = () => {
         </label>
         <label className={css.label}>
           Password
-          <Field className={css.input} type="text" name="password" required />
+          <Field
+            className={css.input}
+            type="password"
+            name="password"
+            required
+          />
           <ErrorMessage name="password" component="p" className={css.error} />
         </label>
         <button className={css.submitBtn} type="submit" aria-label="log in">
