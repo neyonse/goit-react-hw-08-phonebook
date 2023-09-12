@@ -84,8 +84,8 @@ export const SignUpForm = () => {
           />
           <ErrorMessage name="password" component="p" className={css.error} />
         </label>
-        <button className={css.submitBtn} type="submit" aria-label="log in">
-          Log in
+        <button className={css.submitBtn} type="submit" aria-label="Sign up">
+          Sign up
         </button>
       </Form>
     </Formik>

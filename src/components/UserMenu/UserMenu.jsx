@@ -1,21 +1,21 @@
 import { useDispatch } from 'react-redux';
-import { logOut } from 'redux/userSlice';
+import { logoutUser } from 'redux/auth/operations';
 import css from './UserMenu.module.css';
 import PropTypes from 'prop-types';
 
-export const UserMenu = ({ login }) => {
+export const UserMenu = ({ name }) => {
   const dispatch = useDispatch();
 
   return (
     <div className={css.userMenu}>
-      <p className={css.userName}>{login}</p>
-      <button type="button" onClick={() => dispatch(logOut())}>
-        Logout
+      <p className={css.userName}>{name}</p>
+      <button type="button" onClick={() => dispatch(logoutUser())}>
+        Log Out
       </button>
     </div>
   );
 };
 
 UserMenu.propTypes = {
-  login: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };

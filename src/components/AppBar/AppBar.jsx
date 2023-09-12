@@ -11,7 +11,7 @@ export const AppBar = () => {
   return (
     <header className={css.appBar}>
       <AppNav userLoggedIn={userLoggedIn} />
-      {userLoggedIn && <UserMenu login={user.login} />}
+      {userLoggedIn && <UserMenu name={user.name} />}
     </header>
   );
 };

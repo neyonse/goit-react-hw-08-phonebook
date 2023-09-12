@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 // import { loginUser } from 'redux/operations';
-import { logIn } from 'redux/userSlice';
+import { loginUser } from 'redux/auth/operations';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 // import * as yup from 'yup';
 import css from './LoginForm.module.css';
@@ -35,6 +35,7 @@ export const LoginForm = () => {
   const handleSubmit = (values, actions) => {
     const { resetForm } = actions;
     const email = values.email;
+    const password = values.password;
 
     // const isRegistered = isUserAlreadyRegistered(name);
 
@@ -44,8 +45,7 @@ export const LoginForm = () => {
     //   return;
     // }
 
-    // dispatch(loginUser({ email, password }));
-    dispatch(logIn(email));
+    dispatch(loginUser({ email, password }));
     resetForm();
     navigate('/contacts', { replace: true });
   };
