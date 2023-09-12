@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/goit-react-hw-08-phonebook/static/css/main.19c6ca4a.css",
-    "main.js": "/goit-react-hw-08-phonebook/static/js/main.d025113a.js",
+    "main.css": "/goit-react-hw-08-phonebook/static/css/main.5fdac4be.css",
+    "main.js": "/goit-react-hw-08-phonebook/static/js/main.a223541e.js",
     "static/media/Montserrat-SemiBold.ttf": "/goit-react-hw-08-phonebook/static/media/Montserrat-SemiBold.d5e0cc788cba9ced1fb9.ttf",
     "static/media/Montserrat-Medium.ttf": "/goit-react-hw-08-phonebook/static/media/Montserrat-Medium.c86e3b9010ff63c99166.ttf",
     "static/media/Montserrat-Bold.ttf": "/goit-react-hw-08-phonebook/static/media/Montserrat-Bold.2c155811b35513d5beaa.ttf",
     "static/media/Montserrat-Regular.ttf": "/goit-react-hw-08-phonebook/static/media/Montserrat-Regular.ceb11275ab638627a643.ttf",
     "index.html": "/goit-react-hw-08-phonebook/index.html",
-    "main.19c6ca4a.css.map": "/goit-react-hw-08-phonebook/static/css/main.19c6ca4a.css.map",
-    "main.d025113a.js.map": "/goit-react-hw-08-phonebook/static/js/main.d025113a.js.map"
+    "main.5fdac4be.css.map": "/goit-react-hw-08-phonebook/static/css/main.5fdac4be.css.map",
+    "main.a223541e.js.map": "/goit-react-hw-08-phonebook/static/js/main.a223541e.js.map"
   },
   "entrypoints": [
-    "static/css/main.19c6ca4a.css",
-    "static/js/main.d025113a.js"
+    "static/css/main.5fdac4be.css",
+    "static/js/main.a223541e.js"
   ]
 }
