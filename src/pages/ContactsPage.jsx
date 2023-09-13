@@ -5,7 +5,7 @@ import {
   selectIsLoading,
   selectError,
 } from 'redux/contacts/selectors';
-import { fetchContacts } from 'redux/auth/operations';
+import { fetchContacts } from 'redux/contacts/operations';
 import { useLogOutRedirect } from 'hooks/useLogOutRedirect';
 import { Section } from 'components/Section';
 import { AddContactForm } from 'components/AddContactForm';
@@ -32,7 +32,7 @@ export const ContactsPage = () => {
       </Section>
       {isLoading && !error && (
         <p style={{ textAlign: 'center', color: 'orange' }}>
-          Request in progress...
+          Loading contacts...
         </p>
       )}
       {error && (

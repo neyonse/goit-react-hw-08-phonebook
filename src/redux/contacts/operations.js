@@ -8,11 +8,10 @@ export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get('/contacts');
-      console.log(response.data);
-      return response.data;
+      const { data } = await axios.get('/contacts');
+      return data;
     } catch (e) {
-      toast.error('Oooops! Something went wrong. Please, try again.');
+      // toast.error('Oooops! Something went wrong. Please, try again.');
       return thunkAPI.rejectWithValue(e.message);
     }
   }
@@ -22,9 +21,8 @@ export const addContact = createAsyncThunk(
   'contacts/addContact',
   async (contact, thunkAPI) => {
     try {
-      const response = await axios.post('/contacts', contact);
-      console.log(response.data);
-      return response.data;
+      const { data } = await axios.post('/contacts', contact);
+      return data;
     } catch (e) {
       toast.error('Oooops! Something went wrong. Please, try again.');
       return thunkAPI.rejectWithValue(e.message);
