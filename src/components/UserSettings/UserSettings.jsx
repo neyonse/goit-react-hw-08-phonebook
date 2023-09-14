@@ -1,7 +1,7 @@
 export const UserSettings = () => {
   return (
     <div>
-      <p>Settings</p>
+      <p>Here will be account settings</p>
       {/* <div>
         <p>Change user info</p>
         <form>
@@ -23,7 +23,7 @@ export const UserSettings = () => {
           </label>
         </form>
       </div>
-      <p>Delete account</p> */}
+      <button type="button">Delete account</button> */}
     </div>
   );
 };

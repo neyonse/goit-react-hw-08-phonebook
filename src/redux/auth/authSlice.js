@@ -23,15 +23,15 @@ export const authSlice = createSlice({
         state.isLoggedIn = false;
       })
       .addCase(refreshUser.pending, state => {
-        state.isRefreshing = true;
+        state.isRefreshingUser = true;
       })
       .addCase(refreshUser.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoggedIn = true;
-        state.isRefreshing = false;
+        state.isRefreshingUser = false;
       })
       .addCase(refreshUser.rejected, state => {
-        state.isRefreshing = false;
+        state.isRefreshingUser = false;
       });
   },
 });

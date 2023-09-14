@@ -1,3 +1,3 @@
 export const UserBlacklist = () => {
-  return <div>Blacklist</div>;
+  return <div>Here will be user blacklist</div>;
 };

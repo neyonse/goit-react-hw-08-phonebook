@@ -6,18 +6,15 @@ import {
   selectError,
 } from 'redux/contacts/selectors';
 import { fetchContacts } from 'redux/contacts/operations';
-import { useLogOutRedirect } from 'hooks/useLogOutRedirect';
 import { Section } from 'components/Section';
 import { AddContactForm } from 'components/AddContactForm';
 import { Filter } from 'components/Filter';
 import { ContactsList } from 'components/ContactsList';
 
-export const ContactsPage = () => {
+const ContactsPage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-
-  useLogOutRedirect();
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -30,11 +27,7 @@ export const ContactsPage = () => {
       <Section className="addContactSection" title="Phonebook">
         <AddContactForm />
       </Section>
-      {isLoading && !error && (
-        <p style={{ textAlign: 'center', color: 'orange' }}>
-          Loading contacts...
-        </p>
-      )}
+      {isLoading && !error && <p className="message">Loading contacts...</p>}
       {error && (
         <p style={{ textAlign: 'center', color: 'red' }}>
           Ooops! Something went wrong, please try again...
@@ -49,3 +42,5 @@ export const ContactsPage = () => {
     </>
   );
 };
+
+export default ContactsPage;

@@ -20,6 +20,10 @@
   color: var(--accent-color-01);
 }
 
+.userName.active {
+  color: var(--accent-color-01);
+}
+
 button {
   padding: 5px 13px;
 

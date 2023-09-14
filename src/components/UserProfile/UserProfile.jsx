@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
 import { NavLink, Outlet } from 'react-router-dom';
 import css from './UserProfile.module.css';
+import { Suspense } from 'react';
 
 export const UserProfile = () => {
   const name = useSelector(selectUser).name;
@@ -27,7 +28,9 @@ export const UserProfile = () => {
             </NavLink>
           </li>
         </ul>
-        <Outlet />
+        <Suspense fallback={<div className="message">Loading...</div>}>
+          <Outlet />
+        </Suspense>
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import css from './AppNav.module.css';
+import PropTypes from 'prop-types';
 
 export const AppNav = ({ userLoggedIn }) => {
   return (
@@ -32,4 +33,8 @@ export const AppNav = ({ userLoggedIn }) => {
       )}
     </nav>
   );
+};
+
+AppNav.propTypes = {
+  userLoggedIn: PropTypes.bool.isRequired,
 };

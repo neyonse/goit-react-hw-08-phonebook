@@ -1,5 +1,7 @@
 import { NotFoundMessage } from 'components/NotFoundMessage/NotFoundMessage';
 
-export const NotFoundPage = () => {
+const NotFoundPage = () => {
   return <NotFoundMessage />;
 };
+
+export default NotFoundPage;

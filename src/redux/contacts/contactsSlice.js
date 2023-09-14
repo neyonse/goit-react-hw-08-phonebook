@@ -13,6 +13,11 @@ const handleRejected = (state, action) => {
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState: contactsInitialState,
+  reducers: {
+    cleanContacts: state => {
+      state.items = [];
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchContacts.fulfilled, (state, action) => {
@@ -41,4 +46,5 @@ const contactsSlice = createSlice({
   },
 });
 
+export const { cleanContacts } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;

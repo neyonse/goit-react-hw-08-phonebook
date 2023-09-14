@@ -1,23 +1,25 @@
 import { Routes, Route } from 'react-router-dom';
-import { SharedLayout } from 'components/SharedLayout';
-import {
-  HomePage,
-  SignUpPage,
-  LoginPage,
-  UserProfilePage,
-  ContactsPage,
-  NotFoundPage,
-} from 'pages';
 import { Toaster } from 'react-hot-toast';
 import { UserSettings } from 'components/UserSettings';
 import { UserBlacklist } from './UserBlacklist';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { lazy, useEffect } from 'react';
 import { refreshUser } from 'redux/auth/operations';
 import { PrivateRoute } from './PrivateRoute';
+import { PublicRoute } from './PublicRoute';
+import { selectIsRefreshingUser } from 'redux/auth/selectors';
+import { SharedLayout } from 'components/SharedLayout';
 
-export function App() {
+const HomePage = lazy(() => import('pages/HomePage'));
+const SignUpPage = lazy(() => import('pages/SignUpPage'));
+const LoginPage = lazy(() => import('pages/LoginPage'));
+const UserProfilePage = lazy(() => import('pages/UserProfilePage'));
+const ContactsPage = lazy(() => import('pages/ContactsPage'));
+const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
+
+function App() {
   const dispatch = useDispatch();
+  const isRefreshingUser = useSelector(selectIsRefreshingUser);
 
   useEffect(() => {
     dispatch(refreshUser());
@@ -26,27 +28,58 @@ export function App() {
   return (
     <>
       <Toaster position="bottom-right" />
-      <Routes>
-        <Route path="/" element={<SharedLayout />}>
-          <Route index element={<HomePage />} />
-          <Route path="/signup" element={<SignUpPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/profile" element={<UserProfilePage />}>
-            <Route path="settings" element={<UserSettings />} />
-            <Route path="blacklist" element={<UserBlacklist />} />
+      {!isRefreshingUser && (
+        <Routes>
+          <Route path="/" element={<SharedLayout />}>
+            <Route
+              index
+              element={
+                <PublicRoute redirectTo="/contacts" restricted>
+                  <HomePage />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/signup"
+              element={
+                <PublicRoute redirectTo="/contacts" restricted>
+                  <SignUpPage />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/login"
+              element={
+                <PublicRoute redirectTo="/contacts" restricted>
+                  <LoginPage />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <PrivateRoute redirectTo="/login">
+                  <UserProfilePage />
+                </PrivateRoute>
+              }
+            >
+              <Route path="settings" element={<UserSettings />} />
+              <Route path="blacklist" element={<UserBlacklist />} />
+            </Route>
+            <Route
+              path="/contacts"
+              element={
+                <PrivateRoute redirectTo="/login">
+                  <ContactsPage />
+                </PrivateRoute>
+              }
+            />
+            <Route path="*" element={<NotFoundPage />} />
           </Route>
-          <Route
-            path="/contacts"
-            element={
-              // <PrivateRoute path="/login">
-              //   <ContactsPage />
-              // </PrivateRoute>
-              <PrivateRoute component={<ContactsPage />} redirectTo="/login" />
-            }
-          />
-          <Route path="*" element={<NotFoundPage />} />
-        </Route>
-      </Routes>
+        </Routes>
+      )}
     </>
   );
 }
+
+export default App;

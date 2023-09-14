@@ -18,3 +18,7 @@
 .navLink:focus {
   color: var(--accent-color-01);
 }
+
+.navLink.active {
+  color: var(--accent-color-01);
+}
